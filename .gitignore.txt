@@ -1,0 +1,6 @@
+venv_emanuel_cabeza/
+__pycache__/
+*.pyc
+.idea/
+db.sqlite3
+*.log
