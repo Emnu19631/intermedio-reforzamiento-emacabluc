@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sala',
     'entrada',
     'funcion',
+    'cine',
 ]
 
 MIDDLEWARE = [
@@ -81,9 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_cinema_app_ecl',
         'USER': 'postgres',
-        'PASSWORD': r'12345',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 

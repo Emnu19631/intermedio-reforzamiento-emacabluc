@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cartelera Activa</title>
+</head>
+<body>
+    <h1>Cartelera Activa</h1>
+    <p>Películas disponibles actualmente en nuestros cines:</p>
+
+    <ul>
+        {% for pelicula in peliculas %}
+            <li><strong>{{ pelicula.titulo }}</strong></li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

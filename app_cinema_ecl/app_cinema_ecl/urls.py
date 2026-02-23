@@ -1,22 +1,28 @@
-"""
-URL configuration for app_cinema_ecl project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
+from cine import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    # 7. Home del cine
+    path('', views.home_view, name='home'),
+    
+    # 1. Listado de películas
+    path('peliculas/', views.peliculas_list_view, name='peliculas_list'),
+    
+    # 2. Detalle de película
+    path('peliculas/<int:id>/', views.pelicula_detail_view, name='pelicula_detail'),
+    
+    # 3. Funciones de una película
+    path('peliculas/<int:id>/funciones/', views.funciones_list_view, name='funciones_list'),
+    
+    # 4. Entradas vendidas de una función
+    path('funciones/<int:id>/entradas/', views.entradas_list_view, name='entradas_list'),
+    
+    # 5. Snacks comprados por una entrada
+    path('entradas/<int:id>/snacks/', views.snacks_list_view, name='snacks_list'),
+    
+    # 6. Cartelera activa
+    path('cartelera/', views.cartelera_view, name='cartelera'),
 ]

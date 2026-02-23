@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Películas</title>
+</head>
+<body>
+    <h1>Listado Completo de Películas</h1>
+    <ul>
+        {% for pelicula in peliculas %}
+            <li>
+                <strong>{{ pelicula.titulo }}</strong> - Género: {{ pelicula.genero }} ({{ pelicula.duracion_min }} min)
+                <br>
+                <a href="/peliculas/{{ pelicula.id }}/">Ver detalle</a> |
+                <a href="/peliculas/{{ pelicula.id }}/funciones/">Ver funciones</a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

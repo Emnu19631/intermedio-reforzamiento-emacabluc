@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Snacks Comprados</title>
+</head>
+<body>
+    <h1>Snacks de la Entrada #{{ entrada_id }}</h1>
+
+    <ul>
+        {% for snack in snacks %}
+            <li>{{ snack.cantidad }}x {{ snack.producto }} (Precio Unitario: S/{{ snack.precio_unitario }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Total a pagar por snacks: S/{{ total_snacks }}</h3>
+
+    <br>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

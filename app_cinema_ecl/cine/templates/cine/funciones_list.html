@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Funciones</title>
+</head>
+<body>
+    <h1>Funciones Disponibles</h1>
+    <h2>{{ pelicula }}</h2>
+
+    <ul>
+        {% for funcion in funciones %}
+            <li><strong>Hora:</strong> {{ funcion.hora }} | <strong>Precio:</strong> S/{{ funcion.precio }} | <strong>Estado:</strong> {{ funcion.estado }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="/peliculas/">Volver a películas</a>
+</body>
+</html>

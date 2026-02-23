@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Película</title>
+</head>
+<body>
+    <h1>Detalles de la Película</h1>
+
+    {% if pelicula %}
+        <h2>{{ pelicula.titulo }}</h2>
+        <ul>
+            <li><strong>Duración:</strong> {{ pelicula.duracion_min }} minutos</li>
+            <li><strong>Género:</strong> {{ pelicula.genero }}</li>
+            <li><strong>Clasificación:</strong> {{ pelicula.clasificacion }}</li>
+        </ul>
+        <br>
+        <a href="/peliculas/{{ pelicula.id }}/funciones/">Ver las funciones de esta película</a>
+    {% else %}
+        <p>Lo sentimos, no se encontró la película.</p>
+    {% endif %}
+
+    <br><br>
+    <a href="/peliculas/">Volver a la lista de películas</a>
+</body>
+</html>
