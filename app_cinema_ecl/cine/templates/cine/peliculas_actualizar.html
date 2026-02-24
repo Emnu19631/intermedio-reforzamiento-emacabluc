@@ -1,0 +1,34 @@
+{% extends 'cine/base.html' %}
+
+{% block content %}
+    <h1 class="mb-4">Actualización Masiva de Películas</h1>
+
+    <div class="alert alert-info">
+        Actualizando clasificación de películas cuyo género inicia con "Acc" (Acción).
+    </div>
+
+    <form method="GET" action="" class="mb-4 d-flex">
+        <input type="text" name="nueva_clasificacion" class="form-control me-2" placeholder="Nueva clasificación (Ej: PG-13)" required>
+        <button type="submit" class="btn btn-warning">Actualizar Masivamente</button>
+    </form>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Nueva Clasificación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pelicula in peliculas %}
+            <tr>
+                <td>{{ pelicula.titulo }}</td>
+                <td>{{ pelicula.genero }}</td>
+                <td><strong>{{ pelicula.clasificacion }}</strong></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-secondary">Volver al inicio</a>
+{% endblock %}

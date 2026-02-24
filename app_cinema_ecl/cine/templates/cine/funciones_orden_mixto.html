@@ -1,0 +1,37 @@
+{% extends 'cine/base.html' %}
+
+{% block content %}
+    <h1 class="mb-4">Funciones (Orden Mixto)</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Película</th>
+                <th>Estado</th>
+                <th>Fecha y Hora</th>
+                <th>Precio (S/)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funcion in funciones %}
+            <tr>
+                <td>{{ funcion.pelicula.titulo }}</td>
+                <td>
+                    {% if funcion.estado %}
+                        <span class="badge bg-success">Disponible</span>
+                    {% else %}
+                        <span class="badge bg-danger">Agotado</span>
+                    {% endif %}
+                </td>
+                <td>{{ funcion.fecha_hora }}</td>
+                <td>{{ funcion.precio }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No hay funciones registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-secondary">Volver al inicio</a>
+{% endblock %}

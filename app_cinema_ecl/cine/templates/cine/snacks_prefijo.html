@@ -1,15 +1,19 @@
 {% extends 'cine/base.html' %}
 
 {% block content %}
-    <h1 class="mb-4">Snacks de la Entrada #{{ entrada_id }}</h1>
+    <h1 class="mb-4">Buscar Snacks (Inicia con...)</h1>
 
-    <table class="table table-bordered">
+    <form method="GET" action="" class="mb-4 d-flex">
+        <input type="text" name="texto" class="form-control me-2" placeholder="Ej: Ca (Canchita)..." value="{{ texto }}">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    <table class="table table-striped">
         <thead class="table-dark">
             <tr>
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Precio Unitario (S/)</th>
-                <th>Subtotal (S/)</th>
             </tr>
         </thead>
         <tbody>
@@ -18,19 +22,13 @@
                 <td>{{ snack.producto }}</td>
                 <td>{{ snack.cantidad }}</td>
                 <td>{{ snack.precio_unitario }}</td>
-                <td>{% widthratio snack.cantidad 1 snack.precio_unitario %}</td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4" class="text-center">No se compraron snacks con esta entrada.</td>
+                <td colspan="3" class="text-center">No hay resultados.</td>
             </tr>
             {% endfor %}
-            <tr class="table-info fw-bold">
-                <td colspan="3" class="text-end">Total a pagar:</td>
-                <td>S/ {{ total_snacks }}</td>
-            </tr>
         </tbody>
     </table>
-
-    <a href="/" class="btn btn-secondary">Volver al inicio</a>
+    <a href="/" class="btn btn-secondary mt-3">Volver al inicio</a>
 {% endblock %}

@@ -25,4 +25,24 @@ urlpatterns = [
     
     # 6. Cartelera activa
     path('cartelera/', views.cartelera_view, name='cartelera'),
+
+    path('peliculas/', views.peliculas_list_view, name='peliculas_list'),
+
+    path('peliculas/unica/', views.pelicula_unica_view, name='pelicula_unica'),
+
+    path('peliculas/contiene/', views.peliculas_contiene_view, name='peliculas_contiene'),
+
+    path('peliculas/termina/', views.peliculas_termina_view, name='peliculas_termina'),
+
+    path('funciones/orden-mixto/', views.funciones_orden_mixto_view, name='funciones_orden_mixto'),
+
+    path('entradas/rango/', views.entradas_rango_view, name='entradas_rango'),
+
+    path('snacks/prefijo/', views.snacks_prefijo_view, name='snacks_prefijo'),
+
+    path('peliculas/actualizar/', views.peliculas_actualizar_view, name='peliculas_actualizar'),
+
+    path('entradas/<int:id>/eliminar/', views.entrada_eliminar_view, name='entrada_eliminar'),
+
+    path('snacks/actualizar-precios/', views.snacks_actualizar_precios_view, name='snacks_actualizar_precios'),
 ]

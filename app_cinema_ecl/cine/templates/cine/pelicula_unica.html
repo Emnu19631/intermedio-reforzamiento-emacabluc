@@ -1,0 +1,48 @@
+{% extends 'cine/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Buscar Película Exacta</h5>
+            </div>
+            <div class="card-body">
+                <form method="GET" action="" class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Título</label>
+                        <input type="text" name="titulo" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Clasificación</label>
+                        <input type="text" name="clasificacion" class="form-control" required>
+                    </div>
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if request.GET %}
+    <div class="col-md-6 mb-4">
+        {% if pelicula %}
+        <div class="card shadow-sm border-success">
+            <div class="card-header bg-success text-white">¡Película Encontrada!</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ pelicula.titulo }}</h4>
+                <p class="card-text"><strong>Género:</strong> {{ pelicula.genero }} <br> <strong>Duración:</strong> {{ pelicula.duracion }} min</p>
+                <span class="badge bg-warning text-dark fs-6">{{ pelicula.clasificacion }}</span>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-danger shadow-sm">
+            <strong>Error:</strong> No se encontró ninguna película con esos datos exactos.
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+<div class="row justify-content-center"><div class="col-md-12 text-center"><a href="/" class="btn btn-outline-secondary">Volver</a></div></div>
+{% endblock %}}

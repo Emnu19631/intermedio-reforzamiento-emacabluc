@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalle de Película</title>
-</head>
-<body>
-    <h1>Detalles de la Película</h1>
+{% extends 'cine/base.html' %}
+
+{% block content %}
+    <h1 class="mb-4">Detalles de la Película</h1>
 
     {% if pelicula %}
-        <h2>{{ pelicula.titulo }}</h2>
-        <ul>
-            <li><strong>Duración:</strong> {{ pelicula.duracion_min }} minutos</li>
-            <li><strong>Género:</strong> {{ pelicula.genero }}</li>
-            <li><strong>Clasificación:</strong> {{ pelicula.clasificacion }}</li>
-        </ul>
-        <br>
-        <a href="/peliculas/{{ pelicula.id }}/funciones/">Ver las funciones de esta película</a>
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">{{ pelicula.titulo }}</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Duración:</strong> {{ pelicula.duracion }} minutos</li>
+                <li class="list-group-item"><strong>Género:</strong> {{ pelicula.genero }}</li>
+                <li class="list-group-item"><strong>Clasificación:</strong> <span class="badge bg-warning text-dark">{{ pelicula.clasificacion }}</span></li>
+            </ul>
+            <div class="card-body">
+                <a href="/peliculas/{{ pelicula.id }}/funciones/" class="btn btn-info text-white">Ver funciones</a>
+            </div>
+        </div>
     {% else %}
-        <p>Lo sentimos, no se encontró la película.</p>
+        <div class="alert alert-danger">Lo sentimos, no se encontró la película.</div>
     {% endif %}
 
-    <br><br>
-    <a href="/peliculas/">Volver a la lista de películas</a>
-</body>
-</html>
+    <a href="/peliculas/" class="btn btn-secondary">Volver a la lista</a>
+{% endblock %}

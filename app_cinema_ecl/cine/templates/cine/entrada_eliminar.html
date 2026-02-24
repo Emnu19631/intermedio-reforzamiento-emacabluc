@@ -1,0 +1,12 @@
+{% extends 'cine/base.html' %}
+
+{% block content %}
+    <h1 class="mb-4">Eliminación de Entrada</h1>
+    
+    <div class="alert {% if 'No existe' in mensaje %}alert-danger{% else %}alert-success{% endif %} mt-4" role="alert">
+        <h4 class="alert-heading">Resultado:</h4>
+        <p>{{ mensaje }}</p>
+    </div>
+
+    <a href="/" class="btn btn-secondary mt-3">Volver al inicio</a>
+{% endblock %}

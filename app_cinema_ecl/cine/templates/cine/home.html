@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Cine San Marcos</title>
-</head>
-<body>
-    <h1>Bienvenido a {{ nombre_cine }}</h1>
-    <h2>Película Destacada: {{ pelicula_destacada }}</h2>
-    <p><strong>Total de funciones de hoy:</strong> {{ total_funciones }}</p>
+{% extends 'cine/base.html' %}
 
-    <hr>
-    <h3>Menú de Navegación:</h3>
-    <ul>
-        <li><a href="/cartelera/">Ver Cartelera Activa</a></li>
-        <li><a href="/peliculas/">Ver Todas las Películas</a></li>
-    </ul>
-</body>
-</html>
+{% block content %}
+    <div class="p-5 mb-4 bg-light rounded-3 text-center">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Bienvenido a {{ nombre_cine }}</h1>
+            <p class="col-md-8 mx-auto fs-4">Película Destacada: <strong>{{ pelicula_destacada }}</strong></p>
+            <p>Total de funciones de hoy: <span class="badge bg-primary fs-6">{{ total_funciones }}</span></p>
+            
+            <div class="mt-4">
+                <a href="/cartelera/" class="btn btn-primary btn-lg me-2">Ver Cartelera</a>
+                <a href="/peliculas/" class="btn btn-outline-secondary btn-lg">Ver Películas</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

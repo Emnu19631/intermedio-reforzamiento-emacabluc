@@ -1,23 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de Películas</title>
-</head>
-<body>
-    <h1>Listado Completo de Películas</h1>
-    <ul>
-        {% for pelicula in peliculas %}
-            <li>
-                <strong>{{ pelicula.titulo }}</strong> - Género: {{ pelicula.genero }} ({{ pelicula.duracion_min }} min)
-                <br>
-                <a href="/peliculas/{{ pelicula.id }}/">Ver detalle</a> |
-                <a href="/peliculas/{{ pelicula.id }}/funciones/">Ver funciones</a>
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
-    <br>
-    <a href="/">Volver al inicio</a>
-</body>
-</html>
+{% extends 'cine/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold m-0">Mis películas</h1>
+    <a href="/" class="btn btn-outline-secondary px-4 fw-semibold">Volver al inicio</a>
+</div>
+
+<div class="card shadow-sm border-0 rounded-4">
+    <div class="card-body p-0 table-custom">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th class="py-3 ps-4 text-muted">Título</th>
+                    <th class="py-3 text-muted">Género</th>
+                    <th class="py-3 text-muted">Clasificación</th>
+                    <th class="py-3 text-muted">Duración</th>
+                    <th class="py-3 text-center text-muted">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pelicula in peliculas %}
+                <tr>
+                    <td class="ps-4 fw-semibold">{{ pelicula.titulo }}</td>
+                    <td>{{ pelicula.genero }}</td>
+                    <td>{{ pelicula.clasificacion }}</td>
+                    <td>{{ pelicula.duracion_min }} min</td>
+                    <td class="text-center py-3">
+                        <a href="/peliculas/{{ pelicula.id }}/" class="btn btn-info btn-sm text-white fw-bold px-3 me-2 shadow-sm">Ver Detalle</a>
+                        <a href="/peliculas/{{ pelicula.id }}/funciones/" class="btn btn-warning btn-sm text-dark fw-bold px-3 shadow-sm">Funciones</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-5 text-muted fs-5">No hay películas registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

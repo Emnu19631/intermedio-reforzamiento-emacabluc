@@ -1,20 +1,41 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Funciones</title>
-</head>
-<body>
-    <h1>Funciones Disponibles</h1>
-    <h2>{{ pelicula }}</h2>
+{% extends 'cine/base.html' %}
 
-    <ul>
-        {% for funcion in funciones %}
-            <li><strong>Hora:</strong> {{ funcion.hora }} | <strong>Precio:</strong> S/{{ funcion.precio }} | <strong>Estado:</strong> {{ funcion.estado }}</li>
-        {% endfor %}
-    </ul>
+{% block content %}
+    <h1 class="mb-4">Funciones Disponibles</h1>
+    <h3 class="mb-4 text-muted">{{ pelicula }}</h3>
 
-    <br>
-    <a href="/peliculas/">Volver a películas</a>
-</body>
-</html>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Hora</th>
+                <th>Precio (S/)</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for funcion in funciones %}
+            <tr>
+                <td>{{ funcion.fecha_hora }}</td>
+                <td>{{ funcion.precio }}</td>
+                <td>
+                    {% if funcion.estado %}
+                        <span class="badge bg-success">Disponible</span>
+                    {% else %}
+                        <span class="badge bg-danger">Agotado</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/funciones/{{ funcion.id }}/entradas/" class="btn btn-sm btn-outline-primary">Ver Entradas</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No hay funciones para esta película.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/peliculas/" class="btn btn-secondary">Volver a películas</a>
+{% endblock %}
